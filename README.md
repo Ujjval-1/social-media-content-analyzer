@@ -1,87 +1,106 @@
 ﻿🚀 Social Media Content Analyzer
 
-A comprehensive full-stack tool that helps users extract text from PDFs and images, analyze it, and receive AI-driven recommendations to improve social media engagement.
+A production-ready full-stack application that extracts text from PDFs and images, analyzes it, and generates AI-powered suggestions to boost social media engagement.
+👉 Live Demo: https://social-media-content-analyzer-gamma.vercel.app/
 
-✨ Key Features
-📤 File Upload
+✨ Features
+📤 Seamless File Upload
 
-Drag-and-drop or select files manually
+Drag-and-drop or manual selection
 
-Supports: PDF, PNG, JPG, JPEG
+Accepts: PDF, PNG, JPG, JPEG
 
-Real-time notifications using toast messages
+Clean UI with toast-based notifications
 
-🔍 Text Extraction
+🔍 Accurate Local Text Extraction
 
-PDFs processed locally via pdf-parse
+PDFs: processed via pdf-parse
 
-Images processed locally using Tesseract OCR
+Images: processed using local Tesseract OCR
 
-No cloud dependency → faster, secure, and deployment-ready
+100% cloud-free OCR for faster and more secure processing
 
-🤖 AI Engagement Suggestions
+Fully compatible with deployment platforms
 
-Powered by Gemini Flash
+🤖 AI-Based Engagement Enhancements
 
-Improves readability, tone, hashtags, call-to-actions, and virality
+Powered by Gemini Flash:
 
-Suggestions appear after text extraction
+Readability corrections
 
-⚙️ Backend Processing
+Tone enhancement
 
-Built with Bull Queue + Redis for asynchronous tasks
+Hashtag generation
 
-Non-blocking workflow for OCR and AI operations
+CTA improvements
 
-Scalable worker system for heavy processing
+Virality/engagement boost suggestions
 
-🔁 Real-Time Updates
+⚙️ Background Job Queue System
 
-Frontend polls job status
+Built on Bull Queue + Redis
 
-Text results appear first, followed by AI suggestions
+Heavy tasks (OCR + AI) run in background workers
 
-Smooth and responsive UI
+Main API remains fast, stable, and non-blocking
 
-🏗️ Architecture
+🔁 Real-Time Status Updates
+
+Frontend polls backend job status
+
+Extracted text appears first
+
+Suggestions arrive after processing
+
+Smooth, responsive user experience
+
+🏗️ System Architecture
 React → Node API → Bull Queue → Worker → Tesseract OCR + Gemini AI
-           ↑                               ↓
-      Polling ←────────── Save result JSON
+           ↑                                ↓
+      Polling ←────────────── Store & return results
 
 ⚡ Tech Stack
+Frontend
 
-Frontend: React + Vite, Axios, React Hot Toast
-Backend: Node.js, Express, Bull Queue, Redis, pdf-parse, Tesseract OCR (local), Gemini Flash API
+React + Vite
 
-🚀 Setup Instructions
+Axios
 
-Install dependencies:
+React Hot Toast
 
+Backend
+
+Node.js + Express
+
+Bull Queue
+
+Redis
+
+pdf-parse
+
+Tesseract OCR (local)
+
+Gemini Flash Model
+
+🚀 Setup Instructions (Local Development)
+1️⃣ Install dependencies
 cd server && npm install
 cd client && npm install
 
-
-Start Redis:
-
+2️⃣ Start Redis
 redis-server
 
-
-Create .env in the server folder:
-
+3️⃣ Create server .env
 PORT=4000
 GEMINI_API_KEY=your_api_key_here
 REDIS_URL=redis://127.0.0.1:6379
 
-
-Start backend:
-
+4️⃣ Start the backend
 npm run dev
 
-
-Start frontend:
-
+5️⃣ Start the frontend
 npm run dev
 
-📝 Project Summary
+📝 Summary (Under 200 Words)
 
-This tool streamlines text extraction from PDFs and images to optimize social media content. All processing happens locally or in background workers (via Bull Queue + Redis), keeping the API fast and responsive. The system handles heavy OCR and AI workloads asynchronously, ensures temporary files are removed post-processing, and provides real-time updates to the frontend. Fully self-contained and deployment-friendly, it’s ready for production-level tasks.
+This project extracts text from PDFs and images to help users optimize their social media posts using AI-powered suggestions. PDF text is extracted using pdf-parse, while images are processed through local Tesseract OCR—ensuring no cloud OCR dependency. Heavy, time-consuming operations like OCR and AI generation are executed inside Bull Queue workers connected via Redis, allowing the main API to stay responsive. The frontend continuously polls for job updates, showing extracted text first and AI suggestions afterward. Temporary files created during extraction are deleted immediately after processing, making the system clean, scalable, and deployment-friendly. The app is suitable for production use and handles large workloads efficiently.
